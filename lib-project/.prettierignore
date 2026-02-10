@@ -1,0 +1,10 @@
+# папки сборки и артефакты
+dist
+build
+node_modules
+
+# логи
+*.log
+
+# сгенерированные файлы
+public/*.min.js
