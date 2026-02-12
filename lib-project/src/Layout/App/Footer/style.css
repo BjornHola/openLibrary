@@ -1,0 +1,7 @@
+.footer {
+  display: flex;
+}
+
+.footer__text {
+  font-family: "Playfair Display", "Times New Roman", serif;
+}

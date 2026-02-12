@@ -1,0 +1,7 @@
+/* form */
+.form {
+  display: flex;
+  justify-content: center;
+  gap: 11px;
+  position: relative;
+}

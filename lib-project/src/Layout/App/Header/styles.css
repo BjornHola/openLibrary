@@ -1,0 +1,38 @@
+.header {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  width: 100%;
+  min-height: 0;
+  border-bottom: 1px solid black;
+}
+
+.header__logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  background-color: var(--green);
+  background-image: url("../../../assets/book.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.header__logo:hover {
+  filter: drop-shadow(0 0 2em #8ed4b7);
+}
+
+.header__title {
+  font-size: 19px;
+  font-weight: 600;
+  color: #2b2622;
+  font-family: "Playfair Display", "Times New Roman", serif;
+}
+
+.header__caption {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "Playfair Display", "Times New Roman", serif;
+}
