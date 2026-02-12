@@ -1,21 +1,21 @@
 // eslint.config.js
-import js from '@eslint/js';
-import globals from 'globals';
-import { defineConfig } from 'eslint/config';
-import prettierConfig from 'eslint-config-prettier';
-import prettier from 'eslint-plugin-prettier';
+import js from "@eslint/js";
+import globals from "globals";
+import { defineConfig } from "eslint/config";
+import prettierConfig from "eslint-config-prettier";
+import prettier from "eslint-plugin-prettier";
 
 export default defineConfig([
   {
-    ignores: ['dist', 'build', 'node_modules', '.vite'],
+    ignores: ["dist", "build", "node_modules", ".vite"],
   },
 
   // JS
   {
-    files: ['**/*.js'],
+    files: ["**/*.js"],
     languageOptions: {
       ecmaVersion: 2020,
-      sourceType: 'module',
+      sourceType: "module",
       globals: {
         ...globals.browser,
       },
@@ -26,10 +26,10 @@ export default defineConfig([
     rules: {
       ...js.configs.recommended.rules,
       ...prettierConfig.rules,
-      'prettier/prettier': [
-        'error',
+      "prettier/prettier": [
+        "error",
         {
-          endOfLine: 'auto',
+          endOfLine: "auto",
         },
       ],
     },
@@ -37,9 +37,9 @@ export default defineConfig([
 
   // Configs
   {
-    files: ['**/eslint.config.js', '**/prettier.config.js'],
+    files: ["**/eslint.config.js", "**/prettier.config.js"],
     languageOptions: {
-      sourceType: 'module',
+      sourceType: "module",
     },
   },
 ]);

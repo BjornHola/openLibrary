@@ -1,16 +1,43 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  font-family:
+    "Source Sans 3",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
 
-  color-scheme: light dark;
+  /* color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #242424; */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --white: #ffffff;
+  --green: #27694d;
+  --yellow: #daa520;
+  --red: #ef4444;
+  --brown: #383129;
+  --black: #2a2622;
+
+  --title: #2b2622;
+  --text: #7c736a;
+  --border: #e7e2da;
+
+  --background: #f7f4ef;
+  --card: #fcfaf7;
+  --secondary: #eeebe4;
+  --shadow: #c4b8a8;
+  --favorite: #eaf0ed;
+}
+
+* {
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 a {
@@ -33,30 +60,15 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  font-family: "Playfair Display", "Times New Roman", serif;
 }
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: 1900px;
+  min-height: 100vh;
   padding: 2rem;
   text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
-}
-
-.card {
-  padding: 2em;
 }
 
 .read-the-docs {
@@ -70,9 +82,10 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  /* background-color: #1a1a1a; */
   cursor: pointer;
   transition: border-color 0.25s;
+  font-family: "Playfair Display", "Times New Roman", serif;
 }
 button:hover {
   border-color: #646cff;
