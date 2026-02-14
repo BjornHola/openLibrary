@@ -8,11 +8,12 @@ const initialState = {
   title: "Default",
   author: "Default",
   year: "Default",
+  // onclick: null,
 };
 
 export function createCard(root, props = {}) {
+  // onclick => favorite button click
   const { id, image, title, author, year } = { ...initialState, ...props };
-  console.log("CARD PROPS:", { id, image, title, author, year }); //
 
   const card = document.createElement("div");
   card.classList.add("card");

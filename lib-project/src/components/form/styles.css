@@ -1,7 +1,9 @@
 /* form */
 .form {
   display: flex;
+  width: clamp(220px 350px 440px);
   justify-content: center;
-  gap: 11px;
+  gap: 18px;
   position: relative;
+  
 }

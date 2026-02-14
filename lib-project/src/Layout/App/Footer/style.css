@@ -1,5 +1,8 @@
 .footer {
+  width: 100%;
   display: flex;
+  border-top: 1px solid rgb(28, 26, 26);
+  padding: 13px;
 }
 
 .footer__text {

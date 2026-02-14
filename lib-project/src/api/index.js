@@ -1,2 +1,2 @@
-import { fetchBooks, initialState } from "./books";
-export { fetchBooks, initialState };
+import { fetchBooks, initialParams } from "./books";
+export { fetchBooks, initialParams };

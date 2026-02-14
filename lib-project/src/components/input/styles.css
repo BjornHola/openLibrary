@@ -1,6 +1,19 @@
 /* input */
-.form__input {
+.form__input, .filter-input {
   width: 320px;
   height: 45px;
   display: block;
+  border: 1px solid var(--border);
+  font-family: "Playfair Display", "Times New Roman", serif;
+  font-size: 14px;
+  color: var(--black);
+  border-radius: 7px;
+  margin: 0;
+  padding: 4px 8px 4px 32px;
+  background-color: var(--background);
+  background-image: url("../../assets/search.svg");
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  background-size: 16px 16px;
 }
+

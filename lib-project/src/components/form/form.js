@@ -33,15 +33,15 @@ export function createForm(root, props = {}) {
   const formButton = createButton(form, {
     label: "Search",
     className: "form__button",
-    // onClick: null,
     type: "submit",
   });
-  console.log(formButton);// check
+  console.log(formButton); // check
 
   if (onSubmit) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       onSubmit(input.value, e);
+      input.value = "";
     });
   }
 

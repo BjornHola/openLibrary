@@ -12,6 +12,9 @@ export const createHeader = (root, props = {}) => {
   const logo = document.createElement("div");
   logo.classList.add("header__logo");
 
+  const wrapper = document.createElement("div");
+  wrapper.classList.add("header__wrapper");
+
   const title = document.createElement("h3");
   title.classList.add("header__title");
   title.textContent = "The Library";
@@ -20,7 +23,8 @@ export const createHeader = (root, props = {}) => {
   caption.classList.add("header__caption");
   caption.textContent = "Discover yur next favorite book";
 
-  header.append(logo, title, caption);
+  header.append(logo, wrapper);
+  wrapper.append(title, caption);
 
   return header;
 };
