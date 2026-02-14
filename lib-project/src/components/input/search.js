@@ -8,13 +8,11 @@ const initialStateSearch = {
   type: defaultType,
   className: "",
   id: "search",
-  // onInput: null,
-  // onSearch: null,
+  onInput: null,
 };
 
 export function createSearch(root, props = {}) {
-  //onInput, onSearch
-  const { placeholder, type, className, id } = { ...initialStateSearch, ...props };
+  const { placeholder, type, className, id, onInput } = { ...initialStateSearch, ...props };
   const inputSearch = document.createElement("input");
 
   if (placeholder) {
@@ -29,16 +27,11 @@ export function createSearch(root, props = {}) {
   if (className) {
     inputSearch.classList.add(className);
   }
-  // if(onInput) {
-  //   inputSearch.addEventListener("input", (e) => {
-  //     onInput(e.target.value, e);
-  //   });
-  // }
-  // if(onSearch) {
-  //   inputSearch.addEventListener("search", (e) => {
-  //     onSearch(e.target.value, e);
-  //   });
-  // }
+  if (onInput) {
+    inputSearch.addEventListener("input", (e) => {
+      onInput(e.target.value, e);
+    });
+  }
 
   root.append(inputSearch);
   return inputSearch;

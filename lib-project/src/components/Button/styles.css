@@ -1,4 +1,6 @@
 /* button */
 .form__button {
   width: 160px;
+  margin: 0;
+  padding: 7px 14px;
 }

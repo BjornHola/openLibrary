@@ -1,3 +1,5 @@
+import "./style.css";
+
 export const createFooter = (root, props = {}) => {
   const { className, id } = props;
   const footer = document.createElement("footer");

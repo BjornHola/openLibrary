@@ -4,13 +4,12 @@ const defaultLabel = "";
 const initialStateButton = {
   label: defaultLabel,
   className: "",
-  // onClick: null,
+  onclick: null,
   type: "button",
 };
 
 export function createButton(root, props = {}) {
-  // onCLick
-  const { label, className, type } = { ...initialStateButton, ...props };
+  const { label, className, type, onclick } = { ...initialStateButton, ...props };
   const button = document.createElement("button");
   if (label) {
     button.textContent = label;
@@ -23,9 +22,9 @@ export function createButton(root, props = {}) {
     button.type = type;
   }
 
-  // if(onClick) {
-  //   button.addEventListener("click", (e)=> onClick(e));
-  // }
+  if (onclick) {
+    button.addEventListener("click", (e) => onclick(e));
+  }
 
   root.append(button);
   return button;

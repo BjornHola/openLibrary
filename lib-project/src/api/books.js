@@ -1,8 +1,8 @@
 import { BASE_URL } from "./configs.js";
 
-const initialParams = {
-  q: "robert",
-  limit: 15,
+export const initialParams = {
+  q: "harry",
+  limit: 10,
 };
 
 //initial global state
@@ -12,7 +12,6 @@ export const initialState = {
   data: null,
 };
 
-// нужно ли сюда передавать initialState и мутировать его
 export const fetchBooks = async (params = {}) => {
   const state = { ...initialState, loading: true };
 
@@ -31,12 +30,13 @@ export const fetchBooks = async (params = {}) => {
     state.data = await res.json();
     return state;
   } catch (error) {
-    if (state.error instanceof Error) {
+    if (error instanceof Error) {
       state.error = { name: `${error.name}`, message: `${error.message}` };
       console.log("Error: ", error); //
+    } else {
+      state.error = { name: "Unknown", message: "Unknown error" };
+      console.log("Error: ", error); //
     }
-    state.error = { name: "Unknown", message: "Unknown error" };
-    console.log("Error: ", error); //
     return state;
   } finally {
     state.loading = false;
