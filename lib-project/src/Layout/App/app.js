@@ -4,7 +4,15 @@ import { createHeader } from "./Header/index.js";
 import { createFooter } from "./Footer/index.js";
 import { fetchBooks, initialParams } from "../../api/index.js";
 import { createCard } from "../../components/Card/index.js";
+import { favoriteContainer } from "../../components/FavoriteContainer/index.js";
 import { showError, showNotFound, showStartSearch } from "../../helpers/index.js";
+import {
+  renderFavoritesStore,
+  pushFavoriteToStore,
+  isBookLiked,
+  getFavoriteStore,
+  handlerCounterBooks,
+} from "../../utils/localStorage.js";
 import fallback from "../../assets/fallback-book.png";
 import "./styles.css";
 
@@ -83,9 +91,45 @@ export function getApp() {
   });
   filterInput.setAttribute("name", "filter");
 
+  // liked books + liked books
+  const wrapperForMainContent = document.createElement("div");
+  wrapperForMainContent.classList.add("content");
+  // container for all books from API
   const wrapperForBooks = document.createElement("div");
   wrapperForBooks.classList.add("card-container");
   wrapperForBooks.addEventListener("click", handleCloseOverlay);
+
+  // container for favorite books and counter
+  const containerForFavorites = favoriteContainer();
+
+  // handler to click button heart
+  const handlerAddToFavorite = (event, bookData) => {
+    const selectedButton = event.currentTarget;
+    if (!selectedButton) return;
+
+    pushFavoriteToStore(bookData);
+    handlerCounterBooks();
+    const liked = isBookLiked(bookData.id);
+    selectedButton.classList.toggle("card__button_selected", liked);
+  };
+
+  //handler to click button heart in Favorites
+  containerForFavorites.addEventListener("click", (e) => {
+    const button = e.target.closest(".favorite-card__button");
+    if (!button) return;
+    const favoriteCard = button.closest(".favorite-card");
+    if (!favoriteCard) return;
+
+    const id = favoriteCard.id;
+    if (!id) return;
+
+    const booksFromFavorites = getFavoriteStore();
+    const selectedBook = booksFromFavorites.find((favorite) => favorite.id === id);
+    if (!selectedBook) return;
+    pushFavoriteToStore(selectedBook);
+    handlerCounterBooks();
+    renderState();
+  });
 
   const footer = createFooter(app, {
     className: "footer",
@@ -128,14 +172,14 @@ export function getApp() {
         return app;
       }
       currentDocs = docs;
-      // render currentDocs ->
+      // render current books form API ->
       renderState();
     } catch (error) {
       showError(error);
     }
   };
 
-  // render  initial and then current state ->
+  // render UI - initial and then current state(All books) ->
   const renderState = () => {
     wrapperForBooks.innerHTML = "";
 
@@ -155,7 +199,7 @@ export function getApp() {
     }
 
     for (let book of filteredDocs) {
-      createCard(wrapperForBooks, {
+      const bookData = {
         id: book.key?.replace("/works/", ""),
         image: book.cover_i
           ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
@@ -163,12 +207,24 @@ export function getApp() {
         title: book.title,
         author: book.author_name?.[0],
         year: book.first_publish_year,
+      };
+      let liked = isBookLiked(bookData.id);
+      createCard(wrapperForBooks, {
+        ...bookData,
+        isLiked: liked,
+        onClick: (e) => handlerAddToFavorite(e, bookData),
       });
     }
   };
 
-  app.append(header, headline, motto, form, wrapperForFilterInput, wrapperForBooks, footer);
+  app.append(header, headline, motto, form, wrapperForFilterInput, wrapperForMainContent, footer);
+  wrapperForMainContent.append(wrapperForBooks, containerForFavorites);
+  // initial render favorite books
+  renderFavoritesStore();
+  // get initial numbers of liked books from LS
+  handlerCounterBooks();
 
+  // initial state of all books container
   loadState(initialParams);
 
   return app;

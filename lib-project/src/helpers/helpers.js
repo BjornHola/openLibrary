@@ -4,7 +4,7 @@ export function showError(error) {
   container.innerHTML = `
       <details class="error">
     <summary>${error.name}</summary>
-    <pre>${error.message}</pre>
+    <pre class="error__message">${error.message}</pre>
     <button type="button" class="close">X</button>
     </details>`;
 }

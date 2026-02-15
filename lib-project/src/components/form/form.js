@@ -35,7 +35,7 @@ export function createForm(root, props = {}) {
     className: "form__button",
     type: "submit",
   });
-  console.log(formButton); // check
+  formButton.id = "search-button";
 
   if (onSubmit) {
     form.addEventListener("submit", (e) => {

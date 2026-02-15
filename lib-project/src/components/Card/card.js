@@ -8,12 +8,12 @@ const initialState = {
   title: "Default",
   author: "Default",
   year: "Default",
-  // onclick: null,
+  onClick: null,
+  isLiked: false,
 };
 
 export function createCard(root, props = {}) {
-  // onclick => favorite button click
-  const { id, image, title, author, year } = { ...initialState, ...props };
+  const { id, image, title, author, year, onClick, isLiked } = { ...initialState, ...props };
 
   const card = document.createElement("div");
   card.classList.add("card");
@@ -52,11 +52,11 @@ export function createCard(root, props = {}) {
 
   const buttonFavorite = createButton(card, {
     label: null,
-    className: "card__button",
-    // onClick: onClick,
+    className: `card__button${isLiked ? " card__button_selected" : ""}`,
+    onClick: onClick,
     type: "button",
   });
-  buttonFavorite.id = Math.floor((Date.now() / Math.random) * 12345);
+  buttonFavorite.id = Math.floor(Math.random() * 12345);
 
   root.append(card);
   card.append(imageDiv, cardTitle, cardAuthor, cardYear);
