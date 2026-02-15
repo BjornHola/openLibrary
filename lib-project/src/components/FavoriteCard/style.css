@@ -1,0 +1,79 @@
+/* favorite-card */
+
+/* ex-card */
+/* book-card */
+.favorite-card {
+  display: grid;
+  grid-template-columns: 2fr 1fr 0.8fr;
+  gap: 11px;
+  position:relative;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  box-shadow: 0 0 4px var(--shadow);
+}
+/* container-img */
+ .favorite-card__cover-container {
+    width: 200px;
+    height: 310px;
+    overflow-y: hidden;
+  }
+/* cover book */
+  .favorite-card__cover {
+    /* object-fit: cover; */
+    width: 100%;
+    height: 100%;
+  }
+/* container - title, author, year */
+  .favorite-card__description {
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  /* heart */
+  .favorite-card__button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--white);
+  position: absolute;
+  z-index: 10;
+  transform: translate(-50% -50%);
+  padding: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid var(--border);
+  }
+
+  .favorite-card__button::before {
+  content: "";
+  background-image: url("../../assets/heart-liked.svg");
+  inset: 4px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  transition: all 0.2s ease;
+  }
+
+  /* title */
+  .favorite-card__description_title {
+    display: block;
+    font-size: 12px;
+    width: 100px;
+  }
+/* author */
+  .favorite-card__description_author {
+    display: block;
+    font-size: 11px;
+    width: 100px;
+  }
+/* year */
+  .favorite-card__description_year{
+    display: block;
+    font-size: 11px;
+    width: 100px;
+  }
+
+

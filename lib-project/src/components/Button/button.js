@@ -4,26 +4,30 @@ const defaultLabel = "";
 const initialStateButton = {
   label: defaultLabel,
   className: "",
-  onclick: null,
+  onClick: null,
   type: "button",
 };
 
 export function createButton(root, props = {}) {
-  const { label, className, type, onclick } = { ...initialStateButton, ...props };
+  const { label, className, type, onClick } = { ...initialStateButton, ...props };
   const button = document.createElement("button");
   if (label) {
     button.textContent = label;
   }
   if (className) {
-    button.classList.add(className);
+    className.split(" ").forEach((name) => {
+      if (name) {
+        button.classList.add(name);
+      }
+    });
   }
 
   if (type) {
     button.type = type;
   }
 
-  if (onclick) {
-    button.addEventListener("click", (e) => onclick(e));
+  if (onClick) {
+    button.addEventListener("click", (e) => onClick(e));
   }
 
   root.append(button);
