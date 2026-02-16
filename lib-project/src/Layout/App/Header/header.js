@@ -9,6 +9,11 @@ export const createHeader = (root, props = {}) => {
   }
   root.append(header);
 
+  const leftBlock = document.createElement("div");
+  leftBlock.classList.add("header__left");
+  const rightBlock = document.createElement("div");
+  rightBlock.classList.add("header__right");
+
   const logo = document.createElement("div");
   logo.classList.add("header__logo");
 
@@ -21,9 +26,10 @@ export const createHeader = (root, props = {}) => {
 
   const caption = document.createElement("p");
   caption.classList.add("header__caption");
-  caption.textContent = "Discover yur next favorite book";
+  caption.textContent = "Discover your next favorite book";
 
-  header.append(logo, wrapper);
+  header.append(leftBlock, rightBlock);
+  leftBlock.append(logo, wrapper);
   wrapper.append(title, caption);
 
   return header;

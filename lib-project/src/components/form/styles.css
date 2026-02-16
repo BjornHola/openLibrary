@@ -1,9 +1,16 @@
 /* form */
 .form {
   display: flex;
-  width: clamp(220px 350px 440px);
+  width: clamp(220px, 550px, 680px);
   justify-content: center;
   gap: 18px;
   position: relative;
-  
+}
+
+.form__button {
+  width: 160px;
+  margin: 0;
+  padding: 7px 14px;
+  background-color: var(--green);
+  color: var(--white);
 }

@@ -10,6 +10,7 @@
   border: 1px solid var(--border);
   border-radius: 5px;
   box-shadow: 0 0 4px var(--shadow);
+  background-color: var(--favorite);
 }
 /* container-img */
  .favorite-card__cover-container {
@@ -29,6 +30,7 @@
     flex-direction:column;
     justify-content: center;
     align-items: flex-start;
+    background-color: var(--favorite);
   }
 
   /* heart */
@@ -62,18 +64,21 @@
     display: block;
     font-size: 12px;
     width: 100px;
+    color: var(--title);
   }
 /* author */
   .favorite-card__description_author {
     display: block;
     font-size: 11px;
     width: 100px;
+    color: var(--text);
   }
 /* year */
   .favorite-card__description_year{
     display: block;
     font-size: 11px;
     width: 100px;
+    color: var(--text);
   }
 
 

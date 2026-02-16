@@ -1,4 +1,5 @@
 import { createForm } from "../../components/form/index.js";
+import { createButton } from "../../components/Button/index.js";
 import { createSearch } from "../../components/input/index.js";
 import { createHeader } from "./Header/index.js";
 import { createFooter } from "./Footer/index.js";
@@ -13,6 +14,7 @@ import {
   getFavoriteStore,
   handlerCounterBooks,
 } from "../../utils/localStorage.js";
+import { KEY_THEME, startWithTheme } from "../../utils/theme.js";
 import fallback from "../../assets/fallback-book.png";
 import "./styles.css";
 
@@ -29,6 +31,23 @@ export function getApp() {
     className: "header",
     id: "header",
   });
+
+  const handlerSwitchMode = (event) => {
+    const button = event.currentTarget.closest(".switch-mode");
+    if (!button) return;
+    document.documentElement.classList.toggle("dark");
+    const isDark = document.documentElement.classList.contains("dark");
+    localStorage.setItem(KEY_THEME, isDark ? "dark" : "light");
+    button.textContent = button.textContent === "🔆 Light" ? "🌙 Dark" : "🔆 Light";
+  };
+
+  const switcher = createButton(document.querySelector(".header__right"), {
+    label: "🔆 Light",
+    className: "switch-mode",
+    type: "button",
+    onClick: handlerSwitchMode,
+  });
+  switcher.id = "switch-mode";
 
   const headline = document.createElement("h1");
   headline.classList.add("headline");
@@ -219,6 +238,8 @@ export function getApp() {
 
   app.append(header, headline, motto, form, wrapperForFilterInput, wrapperForMainContent, footer);
   wrapperForMainContent.append(wrapperForBooks, containerForFavorites);
+  // read initial or saved theme from local storage
+  startWithTheme(switcher);
   // initial render favorite books
   renderFavoritesStore();
   // get initial numbers of liked books from LS
