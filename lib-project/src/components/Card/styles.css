@@ -24,7 +24,8 @@
   box-shadow: 0 0 4px var(--shadow);
   border-radius: 5px;
   font-family: "Playfair Display", "Times New Roman", serif;
-  /* min-height: 0; */
+  color: var(--title);
+  background-color: var(--card);
 }
 
 .card__image {
@@ -97,6 +98,7 @@ min-height: 0; */
   cursor: pointer;
   transition: all 0.2s ease;
   border: 2px solid var(--border);
+  color: var(--text);
 }
 
 .card__button:hover {
