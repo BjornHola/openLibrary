@@ -1,0 +1,22 @@
+/* motto */
+
+.motto {
+max-width: clamp(300px, 450px, 600px);
+margin: 0 auto;
+font-family: "Playfair Display", "Times New Roman", serif;
+color: var(--text);
+font-size: 16px;
+padding: 18px 11px;
+}
+
+@media screen and (max-width: 767px) {
+  .motto {
+font-size: 13px;
+}
+}
+
+@media screen and (max-width: 1199px) {
+  .motto {
+font-size: 14px;
+}
+}

@@ -1,0 +1,24 @@
+{
+  "name": "lib-project",
+  "homepage": "https://github.com/BjornHola/openLibrary.git",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
+    "preview": "vite preview",
+    "format": "prettier . --write",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0",
+    "imagemin-pngquant": "^10.0.0",
+    "imagemin-svgo": "^11.0.1",
+    "vite": "^7.3.1",
+    "vite-plugin-imagemin": "^0.6.1"
+  }
+}

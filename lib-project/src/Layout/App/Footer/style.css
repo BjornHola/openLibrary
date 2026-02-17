@@ -1,0 +1,28 @@
+.footer {
+  width: 100%;
+  display: flex;
+  border-top: 1px solid var(--border);
+  padding: 13px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+
+.footer__text {
+  color: var(--text);
+  font-family: "Playfair Display", "Times New Roman", serif;
+}
+
+a:focus {
+  outline: 2px solid #17a36b;
+}
+
+a:active {
+  color: #145c31;
+}
+
+@media screen and (max-width: 768px) {
+  .footer__text {
+font-size: 19px;
+}
+}
