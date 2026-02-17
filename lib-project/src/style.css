@@ -50,11 +50,16 @@ html.dark {
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--green);
   text-decoration: inherit;
+  transition: color 0.3s, transform 0.2s;
 }
+
+@media screen and (min-width: 1200px) {
 a:hover {
-  color: #535bf2;
+  color: #408176;
+  transform: scale(1.05);
+}
 }
 
 body {
@@ -64,6 +69,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background-color: var(--background);
+  padding-bottom: 60px;
 }
 
 h1 {

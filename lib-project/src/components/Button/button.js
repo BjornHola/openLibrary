@@ -1,4 +1,3 @@
-import "./styles.css";
 const defaultLabel = "";
 
 const initialStateButton = {

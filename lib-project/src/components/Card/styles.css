@@ -8,7 +8,7 @@
   justify-items: center;
   padding: 14px 17px;
   border-radius: 4px;
-  border: 1px solid var(--border);
+  flex: 1 1 auto;
 }
 
 .card {
@@ -32,7 +32,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 320px;
+  width: 100%;
   height: 480px;
   overflow: hidden;
   aspect-ratio: 16/9;
@@ -42,44 +42,34 @@
 .card__image_medium {
   width: 100%;
   height: 100%;
-  /* object-fit: cover; */
-  /* object-position:  center; */
 }
 
 .card__title {
-  /* width: clamp(280px, 300px, 90%); */
-  /* min-height: 0; */
   font-size: 18px;
-  /* overflow-y: hidden; */
 }
 
 .card__author {
-  /* width: clamp(170px, 200px, 70%);
-min-height: 0; */
   font-size: 16px;
-  /* overflow-y: hidden; */
 }
 
 .card__year {
-  /* width: clamp(150px, 170px, 50%); */
   font-size: 16px;
-  /* overflow-y: hidden; */
 }
 
 .card__title,
 .card__author,
 .card__year {
-  width: 100% !important;
-  max-width: 100% !important;
+  width: 100%;
+  max-width: 100%;
   min-width: 0;
-  flex: none !important;
+  flex: 0 0 auto;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  overflow: visible !important;
-  white-space: normal !important;
-  word-break: break-word !important;
-  overflow-wrap: anywhere !important;
+  overflow: visible;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
   hyphens: auto;
   line-height: 1.3;
   display: block;
@@ -135,5 +125,46 @@ min-height: 0; */
   }
   100% {
     transform: scale(1);
+  }
+}
+
+@media (max-width: 767px) {
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 320px;
+    gap: 10px;
+  }
+  .card {
+    max-width: 100%;
+  }
+  .card__image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  max-height:clamp(320px, 380px, 400px);
+}
+.card__title {
+font-size: 15px;
+padding: 0 2px;
+}
+.card__author {
+font-size: 13px;
+padding: 0 2px;
+}
+.card__year  {
+font-size: 12px;
+padding: 0 2px;
+}
+.card__button {
+  width: 24px;
+  height: 24px;
+}
+}
+
+@media (max-width: 400px) {
+  .card__image {
+max-height:clamp(310px, 330px, 350px);
   }
 }

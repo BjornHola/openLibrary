@@ -10,6 +10,8 @@
   padding: 14px 17px;
   background-color: var(--favorite);
   color: var(--text);
+  flex: 0 0 350px;
+   font-family: "Playfair Display", "Times New Roman", serif;
 }
 
 /* top with info */
@@ -56,3 +58,44 @@ color: var(--title);
 .favorite-container__counter {
   width: 100%;
 }
+
+@media (max-width: 767px) {
+  .favorite-container {
+    display: block;
+    flex: 0 1 auto;
+    min-height: 0;
+    height: 350px;
+    max-width: 100%;
+    overflow-y: auto;
+  }
+  .favorite-container::-webkit-scrollbar {
+     width: 6px;
+  }
+  .favorite-container::-webkit-scrollbar-track {
+  background: var(--favorite);
+}
+  .favorite-container__top {
+    max-width: 250px;
+  }
+  .favorite-books-container {
+    min-height: 0;
+    overflow-y: auto;
+    width: 100%;
+  }
+   .favorite-container__top {
+   display: flex;
+   justify-content: center;
+   gap: 11px;
+}
+
+  .favorite-container__text {
+   width: 100px;
+   overflow-y: hidden;
+   font-size: 12px;
+   padding: 4px 10px;
+}
+}
+
+
+
+

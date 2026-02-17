@@ -1,12 +1,13 @@
 import { favoriteCard } from "../components/FavoriteCard/index.js";
 import fallback from "../assets/fallback-book.png";
+import favoriteFallback from "../assets/no-favorite.png";
 
 export const KEY = "favorite";
 
 // get store state
 export function getFavoriteStore() {
   const favorites = localStorage.getItem(KEY);
-  return favorites ? JSON.parse(favorites) : []; // with no error + UI show []
+  return favorites ? JSON.parse(favorites) : [];
 }
 
 // push in store state
@@ -36,10 +37,15 @@ export function pushFavoriteToStore(book) {
 export function renderFavoritesStore() {
   const container = document.body.querySelector(".favorite-books-container");
   if (!container) return;
-  console.log(container); //
-  container.innerHTML = "";
+
+  const placeholderContainer = `<div class="no-favorites-yet"><img src=${favoriteFallback} alt="No Books Yet"/></div>`;
+  container.innerHTML = placeholderContainer;
   const books = getFavoriteStore();
-  console.log(books); //
+
+  if (!books || books.length === 0) {
+    return container;
+  }
+  container.innerHTML = "";
 
   for (let book of books) {
     const bookData = {
