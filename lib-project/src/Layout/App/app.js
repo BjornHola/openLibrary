@@ -2,6 +2,8 @@ import { createForm } from "../../components/form/index.js";
 import { createButton } from "../../components/Button/index.js";
 import { createSearch } from "../../components/input/index.js";
 import { createHeader } from "./Header/index.js";
+import { createHeadline } from "../../components/Headline/index.js";
+import { createMotto } from "../../components/Motto/index.js";
 import { createFooter } from "./Footer/index.js";
 import { fetchBooks, initialParams } from "../../api/index.js";
 import { createCard } from "../../components/Card/index.js";
@@ -49,13 +51,8 @@ export function getApp() {
   });
   switcher.id = "switch-mode";
 
-  const headline = document.createElement("h1");
-  headline.classList.add("headline");
-  headline.textContent = "Discover your next great read";
-  const motto = document.createElement("p");
-  motto.classList.add("motto");
-  motto.textContent =
-    "Search millions of books, build your personal library, and never lose track of what to read next";
+  const headline = createHeadline();
+  const motto = createMotto();
 
   // handler to close overlay
   const handleCloseOverlay = (e) => {
@@ -147,6 +144,8 @@ export function getApp() {
     if (!selectedBook) return;
     pushFavoriteToStore(selectedBook);
     handlerCounterBooks();
+    filteringValue = "";
+    filterInput.value = "";
     renderState();
   });
 
@@ -167,8 +166,6 @@ export function getApp() {
     try {
       // initial loading
       const state = await fetchBooks(params);
-      console.log(state.data); // check
-      console.log(state.data.docs); // check
       wrapperForBooks.innerHTML = "";
 
       if (state.error) {
@@ -203,7 +200,7 @@ export function getApp() {
     wrapperForBooks.innerHTML = "";
 
     const docs = currentDocs;
-    // ...filter logic
+    // ...filtering logic
     const filteredDocs = filteringValue
       ? docs.filter((book) =>
           (book.author_name ?? []).some((author) =>

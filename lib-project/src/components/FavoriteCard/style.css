@@ -20,7 +20,6 @@
   }
 /* cover book */
   .favorite-card__cover {
-    /* object-fit: cover; */
     width: 100%;
     height: 100%;
   }
@@ -31,6 +30,7 @@
     justify-content: center;
     align-items: flex-start;
     background-color: var(--favorite);
+    gap: 14px;
   }
 
   /* heart */
@@ -81,4 +81,28 @@
     color: var(--text);
   }
 
+@media screen and (max-width: 767px) {
+  .favorite-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+    overflow-y: visible;
+}
+.favorite-card__cover-container {
+    max-width: 260px;
+    height: 310px;
+    overflow: hidden;
+  }
 
+  .favorite-card__cover {
+    width: 100%;
+    height: 100%;
+  }
+.favorite-card__button {
+  top: 0;
+  left: 0;
+  width: 21px;
+  height: 21px;
+}
+}

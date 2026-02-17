@@ -17,12 +17,10 @@ export const fetchBooks = async (params = {}) => {
 
   const parameters = new URLSearchParams({ ...initialParams, ...params });
   const url = `${BASE_URL}/search.json?${parameters.toString()}`;
-  console.log(url); //check
 
   try {
     const res = await fetch(url);
     if (!res.ok) {
-      console.log(res.status, res.statusMessage); //
       throw new Error(
         `Fetch is not successful, HTTP Status: ${res.status}, Message: ${res.statusMessage}`
       );
@@ -32,10 +30,8 @@ export const fetchBooks = async (params = {}) => {
   } catch (error) {
     if (error instanceof Error) {
       state.error = { name: `${error.name}`, message: `${error.message}` };
-      console.log("Error: ", error); //
     } else {
       state.error = { name: "Unknown", message: "Unknown error" };
-      console.log("Error: ", error); //
     }
     return state;
   } finally {

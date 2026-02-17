@@ -17,3 +17,19 @@
   background-size: 16px 16px;
 }
 
+@media screen and (max-width: 768px) {
+  .form__input, .filter-input {
+    font-size: 8px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .form__input:hover, .filter-input:hover  {
+  border-color: var(--green);
+}
+.form__input:focus, .filter-input:focus {
+  outline: none;
+  border-color: var(--green);
+  box-shadow: 0 0 0 2px rgba(46, 204, 113, 0.25);
+}
+}
