@@ -1,6 +1,6 @@
 {
   "name": "lib-project",
-  "homepage": "https://github.com/BjornHola/openLibrary.git",
+  "homepage": "https://github.com/BjornHola/openLibrary",
   "private": true,
   "version": "0.0.0",
   "type": "module",
