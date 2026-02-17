@@ -26,6 +26,7 @@
   font-family: "Playfair Display", "Times New Roman", serif;
   color: var(--title);
   background-color: var(--card);
+  overflow: hidden;
 }
 
 .card__image {
@@ -166,5 +167,11 @@ padding: 0 2px;
 @media (max-width: 400px) {
   .card__image {
 max-height:clamp(310px, 330px, 350px);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+   .card {
+    max-width: 480px;
   }
 }
